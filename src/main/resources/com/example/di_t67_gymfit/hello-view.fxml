@@ -1,16 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.di_t67_gymfit.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<BorderPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="Archivo">
+                    <MenuItem text="Nuevo Socio (Ctrl+N)" />
+                    <MenuItem text="Guardar (Ctrl+S)" />
+                </Menu>
+                <Menu text="Editar" />
+                <Menu text="Ayuda" />
+            </MenuBar>
+            <ToolBar>
+                <Button text="Nuevo"><tooltip><Tooltip text="Crear un nuevo socio" /></tooltip></Button>
+                <Button text="Guardar"><tooltip><Tooltip text="Guardar los cambios" /></tooltip></Button>
+                <Button text="Eliminar"><tooltip><Tooltip text="Eliminar socio seleccionado" /></tooltip></Button>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <GridPane hgap="10" vgap="15">
+            <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+            <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField promptText="Ej: Laura" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Apellidos:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField promptText="Ej: Gómez Ruiz" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Fecha Nacimiento:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Provincia:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <ComboBox promptText="Selecciona provincia..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label text="Cuota:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <RadioButton text="Básica">
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupoCuota" />
+               </toggleGroup></RadioButton>
+                <RadioButton text="Plus" toggleGroup="$grupoCuota" />
+                <RadioButton text="Premium" toggleGroup="$grupoCuota" />
+                <RadioButton text="Joven" toggleGroup="$grupoCuota" />
+            </VBox>
+
+            <Label text="Clase:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <ComboBox promptText="Spinning, Yoga..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+            <HBox alignment="CENTER_RIGHT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <padding><Insets top="20" /></padding>
+                <Button text="Cancelar" />
+                <Button style="-fx-background-color: #0056b3; -fx-text-fill: white; -fx-font-weight: bold;" text="Guardar Socio" />
+            </HBox>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </left>
+    <center>
+        <TableView>
+            <columns>
+                <TableColumn prefWidth="150" text="Nombre" />
+                <TableColumn prefWidth="200" text="Apellidos" />
+                <TableColumn prefWidth="100" text="Fecha Nac." />
+                <TableColumn prefWidth="100" text="Cuota" />
+            </columns>
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem text="Editar" />
+                        <MenuItem text="Dar de baja" />
+                        <MenuItem text="Renovar" />
+                        <MenuItem text="Congelar" />
+                        <MenuItem text="Historial" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </TableView>
+    </center>
+</BorderPane>
