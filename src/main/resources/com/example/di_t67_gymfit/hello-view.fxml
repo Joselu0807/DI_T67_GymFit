@@ -22,6 +22,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
 <BorderPane prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #e8f5e9; -fx-font-family: 'Segoe UI', Aria; -fx-font-size: 14px;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
     <top>
@@ -55,7 +57,16 @@
             <DatePicker style="-fx-base: #f1f3f5;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <Label style="-fx-font-weight: bold;" text="Provincia:" textFill="#333333" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <ComboBox promptText="Selecciona provincia..." style="-fx-background-color: #f1f3f5; -fx-border-color: #ced4da; -fx-border-radius: 3;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox promptText="Selecciona provincia..." style="-fx-background-color: #f1f3f5; -fx-border-color: #ced4da; -fx-border-radius: 3;" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Sevilla" />
+                        <String fx:value="Cádiz" />
+                        <String fx:value="Huelva" />
+                        <String fx:value="Córdoba" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
 
             <Label style="-fx-font-weight: bold;" text="Cuota:" textFill="#333333" GridPane.columnIndex="0" GridPane.rowIndex="4" />
             <VBox spacing="8" style="-fx-background-color: #e8f5e9;" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -69,8 +80,16 @@
             </VBox>
 
             <Label style="-fx-font-weight: bold;" text="Clase:" textFill="#333333" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-            <ComboBox promptText="Spinning, Yoga..." style="-fx-background-color: #f1f3f5; -fx-border-color: #ced4da; -fx-border-radius: 3;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-
+            <ComboBox promptText="Spinning, Yoga..." style="-fx-background-color: #f1f3f5; -fx-border-color: #ced4da; -fx-border-radius: 3;" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Spinning" />
+                        <String fx:value="Yoga" />
+                        <String fx:value="Pilates" />
+                        <String fx:value="Zumba" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
             <HBox alignment="CENTER_RIGHT" spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="6">
                 <padding><Insets top="20" /></padding>
                 <Button style="-fx-background-color: #e9ecef; -fx-text-fill: #495057; -fx-font-weight: bold; -fx-padding: 8 15;" text="Cancelar" />
